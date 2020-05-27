@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.util.Values">
+    <array name="loggers" type="record" depth="1">
+      <record javaclass="com.wm.util.Values">
+        <value name="domain">service</value>
+        <value name="initialLevel">INFO</value>
+        <value name="logFile">root.service</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="domain">business</value>
+        <value name="initialLevel">INFO</value>
+        <value name="logFile">root.business</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="domain">process</value>
+        <value name="initialLevel">INFO</value>
+        <value name="logFile">root.process</value>
+      </record>
+    </array>
+    <record name="logging" javaclass="com.wm.data.ISMemDataImpl">
+      <record name="default" javaclass="com.wm.data.ISMemDataImpl">
+        <value name="level">INFO</value>
+        <value name="pattern">%d %-5p [%c]%m%n</value>
+      </record>
+      <record name="output" javaclass="com.wm.data.ISMemDataImpl">
+        <value name="basePath">logs/app</value>
+      </record>
+      <record name="root" javaclass="com.wm.data.ISMemDataImpl">
+        <value name="level">INFO</value>
+      </record>
+      <record name="graylog" javaclass="com.wm.data.ISMemDataImpl">
+        <value name="host">graylog.host</value>
+        <value name="port">1516</value>
+        <value name="level">INFO</value>
+      </record>
+    </record>
+  </record>
+</IDataXMLCoder>

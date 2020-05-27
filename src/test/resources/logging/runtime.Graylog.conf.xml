@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<logging>
+	<config>
+		<value key="default.level" value="INFO"/>
+		<value key="default.pattern" value="%d %-5p [%c]%m%n"/>
+		<value key="root.level" value="INFO"/>
+		<value key="graylog.host" value="graylog.host"/>
+		<value key="graylog.port" value="1516"/>
+		<value key="graylog.level" value="INFO"/>
+		<value key="fileAppender.maxFileSize" value="50MB"/>
+		<value key="fileAppender.rollPattern" value="-%d{yyyyMMdd}-%i"/>
+	</config>
+	<loggers>
+		<root logLevel="ALL"/>
+	</loggers>
+</logging>

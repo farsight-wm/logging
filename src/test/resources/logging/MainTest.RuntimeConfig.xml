@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<logging>
+	<config>
+		<value key="default.level" value="INFO" />
+		<value key="default.pattern" value="%d %-5p [%c]%m%n" />
+		<value key="root.file" value="root" />
+		<value key="root.level" value="INFO" />
+		<value key="fileAppender.maxFileSize" value="50MB" />
+		<value key="fileAppender.rollPattern" value="-%d{yyyyMMdd}-%i" />
+		<value key="ouput.basePath" value="logs" />
+		<value key="output.basePath" value="logs/app" />
+		<value key="root.logfile" value="root" />
+		<value key="graylog.host" value="graylog.host" />
+		<value key="graylog.port" value="1516" />
+		<value key="graylog.level" value="INFO" />
+	</config>
+	<loggers>
+		<root logLevel="INFO" file="root" fileLevel="INFO" />
+		<logger logger="service" logLevel="INFO" file="root.service" fileLevel="INFO" />
+		<logger logger="business" logLevel="INFO" file="root.business" fileLevel="INFO" />
+		<logger logger="process" logLevel="INFO" file="root.process" fileLevel="INFO" />
+	</loggers>
+</logging>
