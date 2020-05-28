@@ -7,10 +7,10 @@ import org.apache.logging.log4j.Level;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
-import farsight.common.conf.AbstractConfComponent;
-import farsight.common.conf.ConfComponentDecoder;
+import farsight.utils.config.xml.AbstractXMLCodableComponent;
+import farsight.utils.config.xml.XMLCodableComponentDecoder;
 
-public class LogEntity extends AbstractConfComponent<LogEntity> {
+public class LogEntity extends AbstractXMLCodableComponent<LogEntity> {
 	
 	public static class Builder {
 		private String logger;
@@ -112,8 +112,8 @@ public class LogEntity extends AbstractConfComponent<LogEntity> {
     	return Level.toLevel(strLevel);
     }
 
-	static public ConfComponentDecoder<LogEntity> getDecoder() {
-		return new ConfComponentDecoder<LogEntity>() {
+	static public XMLCodableComponentDecoder<LogEntity> getDecoder() {
+		return new XMLCodableComponentDecoder<LogEntity>() {
 			@Override
 			public LogEntity decodeFrom(Node element) {
 				NamedNodeMap attrs = element.getAttributes();

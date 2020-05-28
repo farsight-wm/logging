@@ -15,40 +15,39 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
 import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.core.config.Configuration;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
-import farsight.common.conf.AbstractConfComponent;
-import farsight.common.conf.ConfComponentDecoder;
-import farsight.common.conf.ConfigurationStore;
-import farsight.common.conf.KeyValueComponent;
 import farsight.logging.LoggingDefaults;
 import farsight.logging.xmlUtils.IndentingXMLWriter;
+import farsight.utils.config.Configuration;
+import farsight.utils.config.xml.AbstractXMLCodableComponent;
+import farsight.utils.config.xml.XMLCodableComponentDecoder;
+import farsight.utils.config.xml.XMLCodableKeyValueComponent;
 
 
-public class RuntimeConf extends AbstractConfComponent<RuntimeConf> {
+public class RuntimeConf extends AbstractXMLCodableComponent<RuntimeConf> {
 	
-	public final KeyValueComponent config;
+	public final XMLCodableKeyValueComponent config;
 	public final LoggersSection loggers;
 	private boolean hasChanged = false;
 	
 	/* Constructors and Builder */
 
-	public RuntimeConf(KeyValueComponent config, LoggersSection loggers) {
+	public RuntimeConf(XMLCodableKeyValueComponent config, LoggersSection loggers) {
 		this.config = config;
 		this.loggers = loggers;
 	}
 	
 	public RuntimeConf() {
-		this.config = new KeyValueComponent("config");
+		this.config = new XMLCodableKeyValueComponent("config");
 		this.loggers = new LoggersSection();
 	}
 
-	private RuntimeConf(ConfigurationStore setup) {
-		this.config = new KeyValueComponent("config", setup);
+	private RuntimeConf(Configuration setup) {
+		this.config = new XMLCodableKeyValueComponent("config", setup);
 		this.loggers = new LoggersSection();
 	}
 	
@@ -59,7 +58,7 @@ public class RuntimeConf extends AbstractConfComponent<RuntimeConf> {
 		return fallback;
 	}
 	
-	public static RuntimeConf createFromSetup(ConfigurationStore setup) {
+	public static RuntimeConf createFromSetup(Configuration setup) {
 		RuntimeConf conf = new RuntimeConf(setup);
 		conf.setupDefaults();
 		conf.setupLoggers();
@@ -77,7 +76,7 @@ public class RuntimeConf extends AbstractConfComponent<RuntimeConf> {
 	}
 
 	private void setupDefaults() {
-		if(!config.contains("graylog.host"))
+		if(!config.containsKey("graylog.host"))
 			setConfig("graylog.enable", "false");
 		
 		setDefault("default.level", LoggingDefaults.DEFAULT_LEVEL.name());
@@ -107,22 +106,22 @@ public class RuntimeConf extends AbstractConfComponent<RuntimeConf> {
 		w.writeEndDocument();
 	}
 
-	static public ConfComponentDecoder<RuntimeConf> getDecoder() {
-		return new ConfComponentDecoder<RuntimeConf>() {
+	static public XMLCodableComponentDecoder<RuntimeConf> getDecoder() {
+		return new XMLCodableComponentDecoder<RuntimeConf>() {
 			
 			@Override
 			public RuntimeConf decodeFrom(Node element) {
 				Node child = null;
 				
-				KeyValueComponent config;
+				XMLCodableKeyValueComponent config;
 				LoggersSection loggers;
 				
 				//decode store
 				child = firstChild(element, "config");
 				if(child == null) {
-					config = new KeyValueComponent("config");
+					config = new XMLCodableKeyValueComponent("config");
 				} else {
-					config = KeyValueComponent.getDecoder().decodeFrom(child);
+					config = XMLCodableKeyValueComponent.getDecoder().decodeFrom(child);
 				}
 				
 				//decode loggers
@@ -174,7 +173,7 @@ public class RuntimeConf extends AbstractConfComponent<RuntimeConf> {
     
     /* Configuration API */
 
-	public Configuration createLog4JConfiguration() {
+	public EsbLog4JConfiguration createLog4JConfiguration() {
 		return EsbLog4JConfiguration.createFrom(this);
 	}
 	
@@ -202,7 +201,7 @@ public class RuntimeConf extends AbstractConfComponent<RuntimeConf> {
 	}
 	
 	public void setDefault(String key, String defaultValue) {
-		if(!config.contains(key)) {
+		if(!config.containsKey(key)) {
 			config.put(key, defaultValue);
 			setChanged();
 		}
@@ -221,11 +220,10 @@ public class RuntimeConf extends AbstractConfComponent<RuntimeConf> {
 	}
 	
 	public void removeConfig(String key) {
-		if(config.remove(key)) {
+		if(config.remove(key) != null) {
 			setChanged();
 		}
 	}
-
 
 	public String getConfig(String key) {
 		return config.get(key);
@@ -245,7 +243,7 @@ public class RuntimeConf extends AbstractConfComponent<RuntimeConf> {
 
 	/* reconfiguration API */
 
-	public void reconfigure(ConfigurationStore setup) {
+	public void reconfigure(Configuration setup) {
 		for(Entry<String, String> set: setup.entrySet()) {
 			this.setConfig(set.getKey(), set.getValue());
 		}

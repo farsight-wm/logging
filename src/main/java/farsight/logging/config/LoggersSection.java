@@ -10,10 +10,10 @@ import javax.xml.stream.XMLStreamWriter;
 
 import org.w3c.dom.Node;
 
-import farsight.common.conf.AbstractConfComponent;
-import farsight.common.conf.ConfComponentDecoder;
+import farsight.utils.config.xml.AbstractXMLCodableComponent;
+import farsight.utils.config.xml.XMLCodableComponentDecoder;
 
-public class LoggersSection extends AbstractConfComponent<LoggersSection> {
+public class LoggersSection extends AbstractXMLCodableComponent<LoggersSection> {
 	
 	private LogEntity root;
 	private final LinkedHashMap<String, LogEntity> entities = new LinkedHashMap<>();
@@ -35,11 +35,11 @@ public class LoggersSection extends AbstractConfComponent<LoggersSection> {
 		
 	}
 	
-	public static ConfComponentDecoder<LoggersSection> getDecoder() {
-		return new ConfComponentDecoder<LoggersSection>() {
+	public static XMLCodableComponentDecoder<LoggersSection> getDecoder() {
+		return new XMLCodableComponentDecoder<LoggersSection>() {
 			@Override
 			public LoggersSection decodeFrom(Node element) {
-				final ConfComponentDecoder<LogEntity> decoder = LogEntity.getDecoder();
+				final XMLCodableComponentDecoder<LogEntity> decoder = LogEntity.getDecoder();
 				final LoggersSection result = new LoggersSection();
 				vistChildElements(element, logger -> {
 					LogEntity entity = decoder.decodeFrom(logger);

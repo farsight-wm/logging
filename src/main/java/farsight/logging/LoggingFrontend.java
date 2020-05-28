@@ -16,9 +16,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
 
-import farsight.common.conf.ConfigurationStore;
 import farsight.logging.config.LogEntity;
 import farsight.logging.config.RuntimeConf;
+import farsight.utils.config.Configuration;
+import farsight.utils.config.ConfigurationStore;
 
 /*
  * Some Hints/Notes:
@@ -131,7 +132,7 @@ public class LoggingFrontend {
 		configuration.clearChanged();	
 	}
 
-	private void autoInitialize(ConfigurationStore setup) {
+	private void autoInitialize(Configuration setup) {
 		try {
 			lock.lock();
 			if (!initialized) {
@@ -181,7 +182,7 @@ public class LoggingFrontend {
 		}
 	}
 
-	private RuntimeConf createRuntimeConfigFrom(ConfigurationStore setup) {
+	private RuntimeConf createRuntimeConfigFrom(Configuration setup) {
 		return RuntimeConf.createFromSetup(setup);
 	}
 

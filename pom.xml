@@ -24,7 +24,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>farsight-wm</groupId>
-			<artifactId>core</artifactId>
+			<artifactId>utils</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>farsight-wm</groupId>
