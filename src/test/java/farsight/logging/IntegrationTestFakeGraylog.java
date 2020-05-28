@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import com.softwareag.util.IDataMap;
 
-import farsight.logging.graylog.GelfMessage;
 import farsight.logging.tools.FakeGraylog;
 
 public class IntegrationTestFakeGraylog {
@@ -57,7 +56,7 @@ public class IntegrationTestFakeGraylog {
 		graylog.reset();
 		IDataMap data = new IDataMap();
 		data.put("important", "stuff");
-		lf.getLogger("service").info(GelfMessage.create("TestMessage!", "some:caller", data.getIData(), null));
+		lf.getLogger("service").info(ISMessage.create("TestMessage!", "some:caller", data.getIData(), null));
 		yield();
 		assertThat(graylog.getMessages()).as("has one entry").hasSize(1);
 		

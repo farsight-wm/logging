@@ -19,7 +19,6 @@ import org.apache.logging.log4j.core.LoggerContext;
 import farsight.logging.config.LogEntity;
 import farsight.logging.config.RuntimeConf;
 import farsight.utils.config.Configuration;
-import farsight.utils.config.ConfigurationStore;
 
 /*
  * Some Hints/Notes:
@@ -107,7 +106,7 @@ public class LoggingFrontend {
 
 	/* initialization and synchronization */
 
-	public LoggingFrontend configure(ConfigurationStore setup) {
+	public LoggingFrontend configure(Configuration setup) {
 		if(!initialized)
 			autoInitialize(setup);
 		else if (setup != null)

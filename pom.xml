@@ -27,10 +27,6 @@
 			<artifactId>utils</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>farsight-wm</groupId>
-			<artifactId>logging-graylog</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.softwareag.webmethods</groupId>
 			<artifactId>wm-isclient</artifactId>
 			<scope>provided</scope>
