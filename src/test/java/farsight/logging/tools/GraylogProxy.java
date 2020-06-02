@@ -12,7 +12,7 @@ import java.net.Socket;
 public class GraylogProxy {
 
 	// setup
-	public static final boolean FORWARD_TO_GRAYLOG_ENABLED = true;
+	public static final boolean FORWARD_TO_GRAYLOG_ENABLED = false;
 	public static final String GRAYLOG_HOST = "graylog.host"; //FIXME get from config (properties?)
 	public static final int GRAYLOG_PORT = 1516;
 
