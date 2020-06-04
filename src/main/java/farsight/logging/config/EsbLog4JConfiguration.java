@@ -91,8 +91,6 @@ public class EsbLog4JConfiguration extends BuiltConfiguration {
 		}
 		
 		protected EsbLog4JConfigurationBuilder setup() {
-			//setPackages("esb.framework.logging.log4jPlugin");
-			
 			//Graylog
 			boolean useGrayLog = conf.isSet("graylog.host");
 			if(useGrayLog)

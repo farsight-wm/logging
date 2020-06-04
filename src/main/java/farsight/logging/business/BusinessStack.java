@@ -7,8 +7,8 @@ import java.util.Stack;
 import com.wm.data.IData;
 import com.wm.lang.ns.NSService;
 
-import farsight.logging.ISMessage;
-import farsight.logging.ISMessage.Builder;
+import farsight.logging.log4j2.ISMessage;
+import farsight.logging.log4j2.ISMessage.Builder;
 import farsight.utils.services.InvokeUtils;
 
 // static and concrete very chaotic!

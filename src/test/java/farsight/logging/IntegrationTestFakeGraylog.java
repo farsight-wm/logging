@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import com.softwareag.util.IDataMap;
 
+import farsight.logging.log4j2.ISMessage;
 import farsight.logging.tools.FakeGraylog;
 
 public class IntegrationTestFakeGraylog {
