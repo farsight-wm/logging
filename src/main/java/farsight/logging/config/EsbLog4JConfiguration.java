@@ -140,7 +140,7 @@ public class EsbLog4JConfiguration extends BuiltConfiguration {
 					.addAttribute("host", conf.getConfig("graylog.host"))
 					.addAttribute("port", conf.getConfig("graylog.port"))
 					.addAttribute("protocol", "TCP")
-					.add(newLayout("GelfLayout").addAttribute("host", graylogSource))
+					.add(newLayout("ISGelfLayout").addAttribute("host", graylogSource))
 				);			
 		}		
 		
