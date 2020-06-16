@@ -1,4 +1,4 @@
-package example;
+package farsightwm.logging;
 
 import java.util.List;
 
@@ -8,12 +8,11 @@ import com.softwareag.util.IDataMap;
 import com.wm.app.b2b.server.ServiceException;
 import com.wm.data.IData;
 
+import farsight.logging.LoggingFrontend;
 import farsight.logging.config.LogEntity;
 import farsight.utils.config.ConfigurationStore;
 
-public final class configure
-
-{
+public final class configure {
 
 	final static configure _instance = new configure();
 
@@ -128,8 +127,25 @@ public final class configure
 
 	private static Level getLevel(IDataMap p, String key) {
 		String str = p.getAsString(key);
-		if(str == null)
+		if (str == null)
 			return null;
 		return Level.toLevel(str);
+	}
+
+	public static final void dumpLog4J2Config(IData pipeline) throws ServiceException {
+		IDataMap p = new IDataMap(pipeline);
+		p.put("Log4J2ConfigXML",
+				LoggingFrontend.instance().getConfiguration().getLog4JXMLConfiguration().replace("&#xd;", "\r"));
+	}
+
+	public static final void dumpRuntimeConfig(IData pipeline) throws ServiceException {
+		IDataMap p = new IDataMap(pipeline);
+		boolean writeToDisc = p.getAsBoolean("writeToDisc", false);
+
+		p.put("RuntimeConfigXML", LoggingFrontend.instance().getConfiguration().encodeToString());
+
+		if (writeToDisc) {
+			LoggingFrontend.instance().writeRuntimeConfiguration();
+		}
 	}
 }

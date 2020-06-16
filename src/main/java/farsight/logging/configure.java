@@ -11,9 +11,7 @@ import com.wm.data.IData;
 import farsight.logging.config.LogEntity;
 import farsight.utils.config.ConfigurationStore;
 
-public final class configure
-
-{
+public final class configure {
 
 	final static configure _instance = new configure();
 
@@ -44,7 +42,6 @@ public final class configure
 
 	public static final void commitChanges(IData pipeline) throws ServiceException {
 		LoggingFrontend.instance().commit();
-
 	}
 
 	public static final void initializeLogging(IData pipeline) throws ServiceException {
@@ -128,7 +125,7 @@ public final class configure
 
 	private static Level getLevel(IDataMap p, String key) {
 		String str = p.getAsString(key);
-		if(str == null)
+		if (str == null)
 			return null;
 		return Level.toLevel(str);
 	}

@@ -6,11 +6,20 @@ A more elegant logging than using pub.flow:debugLog ;)
 Configure log files, levels, loggers with startup services.
 
 ## TODO
-- Add IS demo package
+ - Add a maven reactor project to build all at once.
 
 ## Install
 
-Right now you need to place the jar into a package and create some java services that utilize the API provided at farsight.logging.*.
-I will add a demo package soon. You can use the java files located at src/example as a hint in how the services should look like.
+ 1. Clone git repositories and build the maven projects (mvn clean install)
+    1. farsight-wm:parent
+    1. farsight-wm:utils
+    1. farsight-wm:logging-log4jplugin
+    1. farsight-wm:is-package-maven-plugin
+    1. farsight-wm:logging (this one)
+ 1. Copy the generated IS package to your IntegrationServer (from farsight-wm:logging target/is/FarsightWmLogging)
+ 1. Load the package
 
+## Usage
+
+TODO
 

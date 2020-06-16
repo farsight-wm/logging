@@ -70,8 +70,6 @@ public class LoggingFrontend {
 	public static LoggingFrontend instance() {
 		return LoggingFrontendInstanceHolder.INSTANCE;
 	}
-
-	protected static String DEFAULT_RUNTIME_CONFIGURATION_PATH = "config/esbLoggingRuntimeConfig.xml";
 	
 	private HashMap<String, Logger> loggerMap = new HashMap<>();
 	private boolean initialized = false;
@@ -84,7 +82,7 @@ public class LoggingFrontend {
 	/* constructors */
 	
 	public LoggingFrontend() {
-		this(DEFAULT_RUNTIME_CONFIGURATION_PATH);
+		this(LoggingDefaults.DEFAULT_RUNTIME_CONFIGURATION_PATH);
 	}
 	
 	public LoggingFrontend(String configurationFilePath) {
@@ -92,7 +90,7 @@ public class LoggingFrontend {
 	}
 	
 	public LoggingFrontend(RuntimeConf conf) {
-		this(conf, DEFAULT_RUNTIME_CONFIGURATION_PATH);
+		this(conf, LoggingDefaults.DEFAULT_RUNTIME_CONFIGURATION_PATH);
 	}
 
 	public LoggingFrontend(RuntimeConf conf, String configurationFilePath) {

@@ -13,4 +13,6 @@ public interface LoggingDefaults {
 	public static final String ROLL_PATTERN_SUFFIX = "-%d{yyyyMMdd}-%i";
 
 	public static final String LOGFILE_EXTENSION = ".log";
+	
+	public static final String DEFAULT_RUNTIME_CONFIGURATION_PATH = "config/log-runtime-config.xml";
 }

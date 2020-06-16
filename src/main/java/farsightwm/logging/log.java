@@ -1,4 +1,4 @@
-package example;
+package farsightwm.logging;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;
@@ -9,10 +9,10 @@ import com.wm.app.b2b.server.ServiceException;
 import com.wm.data.IData;
 import com.wm.lang.ns.NSService;
 
-import farsight.logging.ISMessage;
-import farsight.logging.ISMessage.Builder;
 import farsight.logging.LoggingDefaults;
 import farsight.logging.LoggingFrontend;
+import farsight.logging.log4j2.ISMessage;
+import farsight.logging.log4j2.ISMessage.Builder;
 import farsight.utils.services.InvokeUtils;
 
 public final class log {
