@@ -9,7 +9,7 @@ import com.wm.lang.ns.NSService;
 
 import farsight.logging.log4j2.ISMessage;
 import farsight.logging.log4j2.ISMessage.Builder;
-import farsight.utils.services.InvokeUtils;
+import farsight.utils.InvokeUtils;
 
 // static and concrete very chaotic!
 public class BusinessStack {

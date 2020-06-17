@@ -13,7 +13,7 @@ import farsight.logging.LoggingDefaults;
 import farsight.logging.LoggingFrontend;
 import farsight.logging.log4j2.ISMessage;
 import farsight.logging.log4j2.ISMessage.Builder;
-import farsight.utils.services.InvokeUtils;
+import farsight.utils.InvokeUtils;
 
 public final class log {
 
