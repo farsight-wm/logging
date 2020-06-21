@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>logging</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 
 	<parent>
 		<groupId>farsight-wm</groupId>
@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>farsight-wm</groupId>
 			<artifactId>utils</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>farsight-wm</groupId>
@@ -71,7 +71,7 @@
 			<plugin>
 				<groupId>farsight-wm</groupId>
 				<artifactId>is-package-maven-plugin</artifactId>
-				<version>1.0.0</version>
+				<version>1.0.1</version>
 				<executions>
 					<execution>
 						<goals>
