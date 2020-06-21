@@ -71,7 +71,6 @@
 			<plugin>
 				<groupId>farsight-wm</groupId>
 				<artifactId>is-package-maven-plugin</artifactId>
-				<version>1.0.1</version>
 				<executions>
 					<execution>
 						<goals>
