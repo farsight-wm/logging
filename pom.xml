@@ -5,17 +5,46 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>logging</artifactId>
-	<version>1.0.0</version>
-
 	<parent>
 		<groupId>farsight-wm</groupId>
-		<artifactId>parent</artifactId>
+		<artifactId>wm-parent</artifactId>
 		<version>10.5.0</version>
-		<relativePath>../parent/pom.xml</relativePath>
+		<relativePath>../wm-parent/pom.xml</relativePath>
 	</parent>
-
+	<artifactId>logging</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+	
 	<name>farsight-wm-logging</name>
+	<description>Logging framework for webMethods</description>
+	<url>https://github.com/farsight-wm/logging</url>
+	
+	<issueManagement>
+		<url>https://github.com/farsight-wm/logging/issues</url>
+		<system>GitHub.com</system>
+	</issueManagement>
+	
+	<scm>
+		<url>https://github.com/farsight-wm/logging</url>
+		<connection>scm:git:https://github.com/farsight-wm/logging.git</connection>
+		<developerConnection>scm:git:https://github.com/farsight-wm/logging.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<licenses>
+		<license>
+			<name>The MIT License (MIT)</name>
+			<url>https://opensource.org/licenses/MIT</url>
+			<distribution>manual</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Cornelius Wicke</name>
+			<url>https://www.xing.com/profile/Cornelius_Wicke</url>
+		</developer>
+	</developers>
 
 	<dependencies>
 		<dependency>
@@ -62,7 +91,6 @@
 			<artifactId>assertj-core</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>
